@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+    {% if contents.message !=  None %}
+        <div class="text-warning">
+            <h3>{{contents.message}}</h3>
+        </div>
+    {% endif%}
+  
+    <div class="row  ml-5 mb-5 mt-3">
+        <div class=" col-md-3 badge  badge-info p-3 mr-3 animated bounce  "><h6> No Countries {{contents.data|length }}</h6></div>
+        <div class=" col-md-3 badge  badge-warning p-3 mr-3 animated bounce  "><h6>  World Confirmed cases {{contents.confirmed }}</h6></div>
+        <div class=" col-md-3 badge  badge-danger p-3 mr-3 animated bounce  "><h6> World Deaths Toll {{contents.death }}</h6></div>
+    </div>
+   
+  
+    <div id="container">
+        <table class="table table-hover table-striped table-bordered">
+            <thead class="black white-text">
+                <tr>
+                    <th>#</th>
+                    <th>Country</th>
+                    <th>Confirmed</th>  
+                    <th>Deaths</th>
+                    <th>Recovered</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%  for k,val  in contents.data.items %}
+                    <tr>
+                        <th scope="row">*</th>
+                        <td>{{ k }}</td>
+                        <td>{{ val.getConfirmed }}</td>
+                        <td>{{ val.getDeaths }}</td>
+                        <td>{{ val.getRecovered }}</td>
+                       
+                    </tr>
+    
+                {% endfor %}
+               
+                
+            </tbody>
+        </table>
+    
+    </div>
+
+
+
+{% endblock %}
+
+

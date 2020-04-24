@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <!--Card content-->
+<div class="card-body">
+    <div class = "row mb-4 mt-4s">
+        <h2 class="col-md-3 "><span class="badge  badge-info p-4"> Country:  {{ contents.country}}</span> </h2>
+        <h2 class="col-md-3  "><span class="badge  badge-info p-4"> Confirmed: {{contents.confirmed }} </span> </h2>
+        <h2 class="col-md-3  "><span class="badge badge-danger p-4"> Deaths: {{contents.deaths}} </span> </h2>
+        <h2 class="col-md-3 "><span class="badge  badge-success p-4"> Recovered: {{contents.recovered}} </span> </h2>
+
+    </div>
+
+    <table class="table table-hover table-striped table-bordered">
+        <thead class="black white-text">
+            <tr>
+                <th>#</th>
+                <th>Province</th>
+                <th>City Name</th>
+                
+                <th>Confirmed</th>
+                <th>Death</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for d in contents.data  %}
+                <tr>
+                    <th scope="row">*</th>
+                    <td>{{d.province}}</td>
+                    <td>{{ d.city}}</td>
+                    <td>{{d.confirmed}}</td>
+                    <td>{{d.deaths}}</td>
+                </tr>
+
+            {% endfor %}
+           
+            
+        </tbody>
+    </table>
+
+</div>
+<!--/.Card content-->
+    
+  
+
+{% endblock %}
