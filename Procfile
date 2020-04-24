@@ -1,1 +1,1 @@
-web: gunicorn Corona19Stat:app --log-file -
+web: gunicorn Corona19Stat.wsgi  --log-file -
