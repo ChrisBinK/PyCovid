@@ -1,5 +1,5 @@
 from django.db import models
-
+from django import forms
 # Create your models here.
 
 class CovidStatistics:
@@ -27,4 +27,20 @@ class CovidStatistics:
     def getRecovered(self):
         return  format(self.recovered, ',d')
 
+
+class ContactForm(forms.Form):
+    subject = forms.CharField(max_length=100)
+    message = forms.CharField()
+    name =  forms.CharField()
+    sender = forms.EmailField()
+    recipients = forms.EmailField()
+   
+
+    def clean(self):
+        cleaned_data = super().clean()
+        self.subject = cleaned_data.get("emailSubject")
+        self.sender = cleaned_data.get("userEmail")
+        self.name = cleaned_data.get("UserName")
+        self.message = cleaned_data.get("emailBody")
+        return cleaned_data
 

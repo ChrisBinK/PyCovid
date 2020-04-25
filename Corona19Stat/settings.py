@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
-from django.http import HttpResponseRedirect
+
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -132,10 +132,10 @@ STATIC_URL = '/static/'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST='smtp.gmail.com'
 EMAIL_PORT=587
-EMAIL_HOST_USER = 'christellebinkal@gmail.com'
-EMAIL_HOST_PASSWORD = '20192019'
-DEFAULT_FROM_EMAIL = 'christellebinkal@gmail.com'
+EMAIL_HOST_USER = 'goldenskailine@gmail.com'
+EMAIL_HOST_PASSWORD = 'golden20202020'
 EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False

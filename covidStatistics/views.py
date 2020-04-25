@@ -6,7 +6,10 @@ from datetime import date
 from urllib.request import urlopen
 from django.core.mail import send_mail
 from covidStatistics.models import CovidStatistics
+from covidStatistics.models import ContactForm
 from django.http import HttpResponseRedirect
+from Corona19Stat.settings import EMAIL_HOST_USER
+
 
 # Create your views here.
 
@@ -108,11 +111,11 @@ def contact(request):
 
 def  email(request):
     if  request.method == 'POST':
-        name =  request.POST.get('UserName')
-        fromEmail =  request.POST.get('userEmail')
-        toEmail = 'christellebinkal@gmail.com'
-        subject =  request.POST.get('emailSubject')
-        content =   ' Sender Name' + name + '\n'+ request.POST.get('emailBody')
+        contact = ContactForm(request.POST)
+        name =  str(contact['name'].value())
+        fromEmail =   str(contact['sender'].value())
+        subject =  str(contact['subject'].value()) 
+        content ='Sender Name' +   name +  '\n' + 'From email '+ fromEmail +  '\n' + str(contact['message'].value()) 
 
-        send_mail(subject,  content,fromEmail, list(toEmail), fail_silently=False )
-    return HttpResponseRedirect('/contact/')
+        send_mail(subject,  content,EMAIL_HOST_USER ,list( EMAIL_HOST_USER ), fail_silently=False )
+    return HttpResponseRedirect('/corona/contact')
