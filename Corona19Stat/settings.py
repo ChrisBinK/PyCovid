@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'l52)_@o+h4t6yj1eo0g(nk)2+fw+#&
 
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = ['https://christellecovid19.herokuapp.com/', '127.0.0.1']
+ALLOWED_HOSTS = ['christellecovid19.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
