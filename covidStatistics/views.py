@@ -6,6 +6,7 @@ from datetime import date
 from urllib.request import urlopen
 from django.core.mail import send_mail
 from covidStatistics.models import CovidStatistics
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 
@@ -114,4 +115,4 @@ def  email(request):
         content =   ' Sender Name' + name + '\n'+ request.POST.get('emailBody')
 
         send_mail(subject,  content,fromEmail, list(toEmail), fail_silently=False )
-    return HttpResponseRedirect('contact')
+    return HttpResponseRedirect('/contact/')
